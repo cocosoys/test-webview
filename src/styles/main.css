@@ -1,0 +1,97 @@
+/**
+ * main.css — 全局样式与 CSS 变量
+ *
+ * 这个文件定义了应用的全局样式，包括：
+ * 1. TailwindCSS 4 引入
+ * 2. 亮色/暗色主题的 CSS 变量
+ * 3. 全局基础样式（字体、背景色、滚动条等）
+ *
+ * 主题切换原理：
+ * - 通过在 <html> 标签上添加/移除 "dark" 类名来切换主题
+ * - TailwindCSS 的 @custom-variant dark 配置让 .dark 类名生效
+ * - CSS 变量在 :root（亮色）和 .dark（暗色）中分别定义
+ * - 所有组件通过 var(--color-xxx) 引用这些变量，自动适配主题
+ */
+
+/* 引入 TailwindCSS 4 */
+@import "tailwindcss";
+
+/* 配置 TailwindCSS 的 dark 模式变体
+ * &:where(.dark, .dark *) 表示当元素或其祖先有 .dark 类时，@dark 变体生效
+ * 这是 TailwindCSS 4 的写法，等效于 TailwindCSS 3 的 darkMode: "class" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =============================================================================
+   亮色主题 CSS 变量
+   在 :root 中定义，作为默认值
+   ============================================================================= */
+:root {
+  --color-bg-primary: #ffffff;      /* 主背景色（页面底色） */
+  --color-bg-secondary: #f3f4f6;   /* 次要背景色（卡片、面板） */
+  --color-bg-tertiary: #e5e7eb;    /* 三级背景色（按钮悬停、输入框） */
+  --color-text-primary: #111827;    /* 主文字颜色 */
+  --color-text-secondary: #6b7280;  /* 次要文字颜色（说明、提示） */
+  --color-border: #d1d5db;         /* 边框颜色 */
+  --color-accent: #3b82f6;         /* 强调色（按钮、高亮、活动项） */
+  --color-accent-hover: #2563eb;   /* 强调色悬停态 */
+  --color-sidebar-bg: #f9fafb;     /* 侧边栏背景色 */
+  --color-titlebar-bg: #ffffff;    /* 标题栏背景色 */
+}
+
+/* =============================================================================
+   暗色主题 CSS 变量
+   当 <html> 标签有 .dark 类名时覆盖 :root 的值
+   ============================================================================= */
+.dark {
+  --color-bg-primary: #0f172a;      /* 深蓝黑色背景 */
+  --color-bg-secondary: #1e293b;   /* 稍浅的背景 */
+  --color-bg-tertiary: #334155;    /* 三级背景 */
+  --color-text-primary: #f1f5f9;   /* 浅色文字 */
+  --color-text-secondary: #94a3b8; /* 次要浅色文字 */
+  --color-border: #475569;         /* 暗色边框 */
+  --color-accent: #60a5fa;         /* 亮蓝色强调（暗色下更亮） */
+  --color-accent-hover: #3b82f6;   /* 强调色悬停态 */
+  --color-sidebar-bg: #1e293b;     /* 侧边栏背景 */
+  --color-titlebar-bg: #0f172a;    /* 标题栏背景 */
+}
+
+/* =============================================================================
+   全局基础样式
+   ============================================================================= */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  overflow: hidden; /* 防止桌面应用出现滚动条 */
+}
+
+/* 允许输入框和可编辑元素选择文本 */
+input, textarea, [contenteditable] {
+  user-select: text;
+}
+
+/* 应用容器占满整个视口 */
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* =============================================================================
+   自定义滚动条样式
+   使用 WebKit 私有属性，适用于 Chrome/Edge/WebView2
+   ============================================================================= */
+::-webkit-scrollbar {
+  width: 6px; /* 滚动条宽度 */
+}
+::-webkit-scrollbar-track {
+  background: transparent; /* 轨道透明 */
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border); /* 滑块颜色 */
+  border-radius: 3px;                    /* 圆角 */
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-secondary); /* 悬停时变深 */
+}

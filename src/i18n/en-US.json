@@ -1,0 +1,106 @@
+{
+  "app": {
+    "name": "Test WebView",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "about": "About"
+  },
+  "titlebar": {
+    "minimize": "Minimize",
+    "maximize": "Maximize",
+    "restore": "Restore",
+    "close": "Close"
+  },
+  "closeDialog": {
+    "title": "Close Window",
+    "question": "What would you like to do?",
+    "minimizeToTray": "Minimize to Tray",
+    "minimizeToTrayDesc": "Hide to system tray, restore anytime",
+    "quitApp": "Quit Application",
+    "quitAppDesc": "Completely close the application",
+    "rememberChoice": "Remember my choice and don't ask again"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to Test WebView",
+    "subtitle": "Desktop app tech demo based on Tauri + Vue",
+    "stats": {
+      "systemInfo": "System Info",
+      "platform": "Platform",
+      "architecture": "Architecture",
+      "osVersion": "OS Version",
+      "appVersion": "App Version",
+      "runtimeInfo": "Runtime Info",
+      "webview": "WebView Engine",
+      "rustVersion": "Rust Version",
+      "frontendFramework": "Frontend Framework",
+      "quickActions": "Quick Actions",
+      "openSettings": "Open Settings",
+      "viewAbout": "View About",
+      "toggleTheme": "Toggle Theme"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "behavior": "Behavior",
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "closeAction": "On Window Close",
+    "closeActionDesc": "Set the default behavior when clicking the close button",
+    "closeActionAsk": "Ask Every Time",
+    "closeActionAskDesc": "Show a dialog to choose",
+    "closeActionMinimize": "Minimize to Tray",
+    "closeActionMinimizeDesc": "Hide to system tray",
+    "closeActionQuit": "Quit Application",
+    "closeActionQuitDesc": "Completely close the app",
+    "storage": "Storage",
+    "configPath": "Config Path",
+    "configPathDescription": "Where application configuration files are stored",
+    "changePath": "Change Path",
+    "currentPath": "Current Path",
+    "about": "About",
+    "version": "Version",
+    "techStack": "Tech Stack",
+    "license": "License",
+    "openSourceInfo": "This app is built with the following open-source technologies"
+  },
+  "about": {
+    "title": "About",
+    "appName": "Test WebView",
+    "description": "A WebView desktop app tech demo based on Tauri + Vue",
+    "version": "Version",
+    "configVersion": "Config Version",
+    "techStack": "Tech Stack",
+    "backend": "Backend",
+    "frontend": "Frontend",
+    "framework": "Framework",
+    "license": "License",
+    "mit": "MIT License",
+    "credits": "Credits"
+  },
+  "languages": {
+    "zh-CN": "简体中文",
+    "en-US": "English"
+  },
+  "tray": {
+    "show": "Show Window",
+    "hide": "Hide Window",
+    "quit": "Quit"
+  },
+  "menu": {
+    "file": "File",
+    "view": "View",
+    "help": "Help",
+    "settings": "Settings...",
+    "about": "About",
+    "quit": "Quit",
+    "toggleFullscreen": "Toggle Fullscreen",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "resetZoom": "Reset Zoom"
+  }
+}
