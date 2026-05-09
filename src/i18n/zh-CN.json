@@ -34,6 +34,8 @@
       "webview": "WebView 引擎",
       "rustVersion": "Rust 版本",
       "frontendFramework": "前端框架",
+      "environment": "运行环境",
+      "apiBaseUrl": "API 服务地址",
       "quickActions": "快速操作",
       "openSettings": "打开设置",
       "viewAbout": "查看关于",

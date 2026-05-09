@@ -11,6 +11,7 @@
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { useAppStore } from "@/stores/app";
+import { appEnvironment } from "@/config/environment";
 import { Monitor, Cpu, Globe, Settings, Info, Sun } from "lucide-vue-next";
 
 const { t } = useI18n();
@@ -28,6 +29,8 @@ const systemCards = [
 const runtimeCards = [
   { icon: Cpu, labelKey: "dashboard.stats.rustVersion", value: "1.85.0" },
   { icon: Globe, labelKey: "dashboard.stats.frontendFramework", value: "Vue 3 + TypeScript" },
+  { icon: Settings, labelKey: "dashboard.stats.environment", value: appEnvironment.displayName },
+  { icon: Globe, labelKey: "dashboard.stats.apiBaseUrl", value: appEnvironment.services.apiBaseUrl },
 ];
 
 /** 快速操作按钮 */
@@ -40,7 +43,7 @@ const quickActions = [
     const currentIdx = modes.indexOf(appStore.theme);
     appStore.setTheme(modes[(currentIdx + 1) % modes.length]);
   }},
-};
+];
 </script>
 
 <template>

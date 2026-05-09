@@ -94,6 +94,53 @@ npm install
 npm run tauri dev
 ```
 
+### 环境划分
+
+环境配置统一放在 `environment.config.json`。Vite 会按 mode 映射到三个项目环境：
+
+| 环境 | 命令 | 用途 |
+|------|------|------|
+| `dev` | `npm run dev` | 默认 Tauri/Vite 开发环境 |
+| `local` | `npm run dev:local` | 本机联调环境（Vite mode 使用 `local-env`） |
+| `prod` | `npm run build` | 生产构建环境 |
+
+集中配置内容包括：
+
+- `frontend.protocol` / `frontend.host` / `frontend.port`：前端启动 URL 和端口
+- `frontend.listenHost` / `frontend.hmrPort`：Vite 监听地址和 HMR 端口
+- `services.apiBaseUrl` / `services.webSocketUrl`：业务服务地址
+- `commands.beforeDevCommand` / `commands.beforeBuildCommand`：Tauri 调用的启动与构建命令
+- `features.enableDebugTools` / `features.enableVerboseLogging`：前端运行时开关
+
+当前环境会通过 `src/config/environment.ts` 注入前端。Tauri 的 `devUrl` 和命令通过 `scripts/sync-env-config.mjs` 从同一份配置同步生成。
+
+快速修改示例：
+
+```json
+{
+  "frontend": {
+    "host": "localhost",
+    "port": 5173,
+    "hmrPort": 5174
+  },
+  "services": {
+    "apiBaseUrl": "http://localhost:8080",
+    "webSocketUrl": "ws://localhost:8080"
+  }
+}
+```
+
+修改后运行 `npm run sync:env:local` 即可把 Tauri 的开发 URL 和启动命令同步到 `src-tauri/tauri.conf.json`。
+
+常用命令：
+
+```bash
+npm run sync:env:local
+npm run tauri:dev:local
+npm run build:local
+npm run tauri:build
+```
+
 ### 构建发布
 
 ```bash

@@ -1,0 +1,85 @@
+{
+  "defaultEnvironment": "dev",
+  "modeAliases": {
+    "development": "dev",
+    "local-env": "local",
+    "production": "prod"
+  },
+  "environments": {
+    "dev": {
+      "name": "dev",
+      "displayName": "Development",
+      "description": "Default Tauri and Vite development environment.",
+      "frontend": {
+        "protocol": "http",
+        "host": "localhost",
+        "listenHost": false,
+        "port": 1420,
+        "strictPort": true,
+        "hmrPort": 1421
+      },
+      "services": {
+        "apiBaseUrl": "http://localhost:3000",
+        "webSocketUrl": "ws://localhost:3000"
+      },
+      "features": {
+        "enableDebugTools": true,
+        "enableVerboseLogging": true
+      },
+      "commands": {
+        "beforeDevCommand": "npm run dev",
+        "beforeBuildCommand": "npm run build:dev"
+      }
+    },
+    "local": {
+      "name": "local",
+      "displayName": "Local",
+      "description": "Local integration environment for this machine.",
+      "frontend": {
+        "protocol": "http",
+        "host": "localhost",
+        "listenHost": false,
+        "port": 1420,
+        "strictPort": true,
+        "hmrPort": 1421
+      },
+      "services": {
+        "apiBaseUrl": "http://localhost:3000",
+        "webSocketUrl": "ws://localhost:3000"
+      },
+      "features": {
+        "enableDebugTools": true,
+        "enableVerboseLogging": true
+      },
+      "commands": {
+        "beforeDevCommand": "npm run dev:local",
+        "beforeBuildCommand": "npm run build:local"
+      }
+    },
+    "prod": {
+      "name": "prod",
+      "displayName": "Production",
+      "description": "Bundled production environment.",
+      "frontend": {
+        "protocol": "http",
+        "host": "localhost",
+        "listenHost": false,
+        "port": 1420,
+        "strictPort": true,
+        "hmrPort": 1421
+      },
+      "services": {
+        "apiBaseUrl": "https://api.example.com",
+        "webSocketUrl": "wss://api.example.com"
+      },
+      "features": {
+        "enableDebugTools": false,
+        "enableVerboseLogging": false
+      },
+      "commands": {
+        "beforeDevCommand": "npm run dev",
+        "beforeBuildCommand": "npm run build"
+      }
+    }
+  }
+}

@@ -34,6 +34,8 @@
       "webview": "WebView Engine",
       "rustVersion": "Rust Version",
       "frontendFramework": "Frontend Framework",
+      "environment": "Environment",
+      "apiBaseUrl": "API Base URL",
       "quickActions": "Quick Actions",
       "openSettings": "Open Settings",
       "viewAbout": "View About",

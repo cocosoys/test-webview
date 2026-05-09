@@ -20,6 +20,7 @@ import App from "./App.vue";
 import router from "./router";
 // 国际化配置
 import i18n from "./i18n";
+import { appEnvironment } from "./config/environment";
 // 全局样式（包含 TailwindCSS）
 import "./styles/main.css";
 
@@ -41,6 +42,12 @@ app.use(i18n);
 // 将 Vue 应用挂载到 HTML 中 id="app" 的 DOM 元素上
 // 对应 index.html 中的 <div id="app"></div>
 app.mount("#app");
+
+document.documentElement.dataset.appEnv = appEnvironment.name;
+
+if (appEnvironment.features.enableVerboseLogging) {
+  console.info(`[environment] ${appEnvironment.displayName}`, appEnvironment);
+}
 
 // =============================================================================
 // 监听来自 Rust 后端的导航事件

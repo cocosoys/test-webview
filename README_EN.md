@@ -93,6 +93,57 @@ npm install
 npm run tauri dev
 ```
 
+### Environments
+
+Environment settings live in `environment.config.json`. Vite maps modes to
+three project environments:
+
+| Environment | Command | Purpose |
+|-------------|---------|---------|
+| `dev` | `npm run dev` | Default Tauri/Vite development mode |
+| `local` | `npm run dev:local` | Local machine integration mode (`local-env` Vite mode) |
+| `prod` | `npm run build` | Production bundle mode |
+
+Centralized settings include:
+
+- `frontend.protocol` / `frontend.host` / `frontend.port`: frontend startup URL and port
+- `frontend.listenHost` / `frontend.hmrPort`: Vite listen host and HMR port
+- `services.apiBaseUrl` / `services.webSocketUrl`: backend service URLs
+- `commands.beforeDevCommand` / `commands.beforeBuildCommand`: commands used by Tauri
+- `features.enableDebugTools` / `features.enableVerboseLogging`: runtime frontend switches
+
+The selected environment is injected into the frontend through
+`src/config/environment.ts`. Tauri `devUrl` and command settings are generated
+from the same file by `scripts/sync-env-config.mjs`.
+
+Quick edit example:
+
+```json
+{
+  "frontend": {
+    "host": "localhost",
+    "port": 5173,
+    "hmrPort": 5174
+  },
+  "services": {
+    "apiBaseUrl": "http://localhost:8080",
+    "webSocketUrl": "ws://localhost:8080"
+  }
+}
+```
+
+After changing those values, run `npm run sync:env:local` to sync Tauri
+`devUrl` and command settings into `src-tauri/tauri.conf.json`.
+
+Common commands:
+
+```bash
+npm run sync:env:local
+npm run tauri:dev:local
+npm run build:local
+npm run tauri:build
+```
+
 ### Build for Production
 
 ```bash

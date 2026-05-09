@@ -18,7 +18,7 @@ import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
   // 使用 HTML5 History 模式（URL 无 # 号）
   // 在 Tauri WebView 中，所有路径都指向同一个 index.html
-  createWebHistory(),
+  history: createWebHistory(),
 
   // 路由规则数组
   routes: [
